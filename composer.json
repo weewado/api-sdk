@@ -1,0 +1,23 @@
+{
+	"name": "weewado/api-sdk",
+	"type": "library",
+	"description": "PSR-4 SDK for communication with the weewado API",
+	"keywords": ["api", "sdk", "auth", "psr-4"],
+	"homepage": "https://api.weewado.com",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Dr. Sabine Hopmeier",
+			"email": "github@weewado.com"
+		}
+	],
+	"require": {
+		"php": ">=7.0.0",
+		"guzzlehttp/guzzle": "^6.2"
+	},
+	"autoload": {
+		"psr-4": {
+			"weewado\\": "src/"
+		}
+	}
+}
