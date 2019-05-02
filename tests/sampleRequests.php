@@ -2,7 +2,7 @@
 
 namespace tests;
 
-include_once("../../../autoload.php");
+include_once("../../autoload.php");
 
 use weewado\Client\Orders;
 use weewado\Client\Products;
@@ -25,7 +25,6 @@ try
 	#print_r($orderObj->getOrders());
 	#print_r($orderObj->getOrder(1713));
 	#exit;
-
 	// create an order
 	$orderData	 = [
 		'reference'	 => '123',
@@ -46,14 +45,23 @@ try
 	$orderId = $orderObj->createOrder($orderData);
 
 	// add item
-	$yourItemId = '555';
-	$productDetails = [
+	$yourItemId		 = '555';
+	$productDetails	 = [
 		'version'	 => $yourItemId,
 		'variant'	 => '',
 		'quantity'	 => 1
 	];
 
 	print_r($orderObj->addMyProduct($orderId, $productDetails));
+
+	// add designer configuration
+	$yourConfigrationId	 = '4564';
+	$configrationDetails = [
+		'configuration'	 => $yourConfigrationId,
+		'quantity'		 => 1
+	];
+
+	print_r($orderObj->addConfiguration($orderId, $configrationDetails));
 
 	#print_r($orderObj->submitOrder($orderId));
 }

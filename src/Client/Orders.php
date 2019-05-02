@@ -78,6 +78,32 @@ class Orders extends \weewado\Base
 	}
 
 	/**
+	 * addConfiguration
+	 * 
+	 * @param int $orderId ID of order you want to add a product for
+	 * @param array $configurationDetails Array with details
+	 * @return int Unique ID of added item
+	 * @throws ApiRequestException
+	 */
+	public function addConfiguration ($orderId, $configurationDetails)
+	{
+		if (trim($orderId) == '')
+		{
+			throw new ApiRequestException("Please provide an order id you want to add a configuration for.");
+		}
+
+		if (empty($configurationDetails) == true)
+		{
+			throw new ApiRequestException("Please provide an array of configuration data");
+		}
+
+		$url		 = "/Orders/" . $orderId . "/AddConfiguration";
+		$response	 = $this->callAPI("POST", $url, $configurationDetails);
+
+		return $response->data->id;
+	}
+
+	/**
 	 * submitOrder
 	 * 
 	 * @param int $orderId ID of order you want to submit/close
